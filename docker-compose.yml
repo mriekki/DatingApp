@@ -1,0 +1,34 @@
+services:
+  api:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Data source=/data/dating.db
+      - TokenKey=${TOKEN_KEY}
+      - CloudinarySettings__CloudName=${CLOUDINARY_CLOUD_NAME}
+      - CloudinarySettings__ApiKey=${CLOUDINARY_API_KEY}
+      - CloudinarySettings__ApiSecret=${CLOUDINARY_API_SECRET}
+    volumes:
+      # Persist the SQLite database outside the container
+      - sqlite-data:/data
+    networks:
+      - datingapp
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - datingapp
+
+volumes:
+  sqlite-data:
+
+networks:
+  datingapp:

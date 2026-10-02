@@ -1,0 +1,19 @@
+{
+  // Copilot: include relevant files to improve context
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.codeGeneration.instructions": [
+    { "file": ".github/copilot-instructions.md" }
+  ],
+  // Copilot commit message generation
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Use conventional commits format: type(scope): short summary. Types: feat, fix, refactor, docs, chore, test." }
+  ],
+  // Recommended extensions for this workspace
+  "extensions.recommendations": [
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-dotnettools.csdevkit",
+    "angular.ng-template",
+    "ms-azuretools.vscode-docker"
+  ]
+}
